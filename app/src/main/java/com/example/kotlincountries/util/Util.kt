@@ -2,6 +2,7 @@ package com.example.kotlincountries.util
 
 import android.content.Context
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.Options
@@ -29,4 +30,8 @@ fun placeHolderDrawble(context: Context):CircularProgressDrawable{
             start()
         }
 
+}
+@BindingAdapter("android:downloadUrl")
+fun downloadImage(view: ImageView, url: String?){
+    url?.let { view.downloadUrl(it, placeHolderDrawble(view.context)) }
 }

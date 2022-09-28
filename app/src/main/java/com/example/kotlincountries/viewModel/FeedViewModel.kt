@@ -1,5 +1,6 @@
 package com.example.kotlincountries.viewModel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -34,6 +35,7 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun getDataFromSql() {
         launch {
         val countriesSql = CountryDatabase(getApplication()).countryDao().getAllCountries()

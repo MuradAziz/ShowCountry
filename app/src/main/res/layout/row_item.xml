@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="country"
+            type="com.example.kotlincountries.model.Country" />
+        <variable
+            name="listener"
+            type="com.example.kotlincountries.adapter.CountryListener" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:onClick="@{listener::onClickedCountry}"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/CountryUuidText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(country.uuid)}"
+            />
 
         <ImageView
             android:id="@+id/imageView"
@@ -11,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:padding="3dp"
+            android:downloadUrl="@{country.imageUrl}"
             android:src="@mipmap/ic_launcher_round"
             >
 
@@ -26,7 +45,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@{country.countryName}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="5dp">
@@ -38,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Region"
+                android:text="@{country.countryRegion}"
                 android:padding="5dp">
 
             </TextView>
